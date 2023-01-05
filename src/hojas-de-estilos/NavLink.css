@@ -1,0 +1,12 @@
+.navLink-contenedor {
+  height: 75px;
+  background-color: rgb(52, 122, 235);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 150px 0 150px;
+}
+a {
+  color: darkblue;
+  font-size: 20px;
+}

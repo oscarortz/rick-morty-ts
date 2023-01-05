@@ -1,24 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { LinksSuperiores } from "./componentes/LinksSuperiores";
+import "./App.css";
+import { Titulo } from "./componentes/Titulo";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Navegacion } from "./componentes/NavLink";
+import { Home } from "./paginas/Home";
+import { TodosLosEpisodios } from "./paginas/TodosLosEpisodios";
+import { TodasLasLocaciones } from "./paginas/TodasLasLocaciones";
+import { DetalleDelPersonaje } from "./paginas/DetalleDelPersonaje";
+import { DetalleEpisodios } from "./paginas/DetalleEpisodios";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <LinksSuperiores />
+      <Titulo />
+      <BrowserRouter>
+        <Navegacion />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/episodios" element={<TodosLosEpisodios />} />
+          <Route path="/locacion" element={<TodasLasLocaciones />} />
+          <Route
+            path="/detalleDelPersonaje/:id"
+            element={<DetalleDelPersonaje />}
+          />
+          <Route path="/detalleEpisodios/:id" element={<DetalleEpisodios />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

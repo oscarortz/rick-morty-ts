@@ -1,0 +1,13 @@
+.cards-contenedor {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+ul {
+  list-style-type: none;
+  cursor: pointer;
+}
+ul:hover {
+  color: red;
+}

@@ -1,0 +1,27 @@
+.link-icono {
+  height: auto;
+  width: 50px;
+  transition: all;
+}
+a {
+  text-decoration: none;
+  color: black;
+  font-size: large;
+}
+a:hover {
+  color: rgb(205, 147, 76);
+}
+.link-contenedor {
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+.button-support {
+  border-radius: 5px;
+  height: 32px;
+}
+.button-support:hover {
+  background-color: rgb(205, 147, 76);
+}

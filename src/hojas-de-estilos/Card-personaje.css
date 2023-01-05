@@ -1,0 +1,21 @@
+.card-personaje {
+  margin: 10px;
+  border: 1px solid black;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 5px;
+  min-width: 650px;
+}
+.status-contenedor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 18px;
+}
+
+h4 h5 {
+  height: 18px;
+}
+h6 {
+  max-width: 315px;
+}
