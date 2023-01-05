@@ -38,14 +38,14 @@ const Personaje = ({ personajes }: Props) => {
               <h5>{personaje.gender}</h5>
 
               <Link
-                to={`/detalleEpisodios/${personaje.episode.map((item) =>
+                to={`/detalleEpisodios/${personaje.episode.map((item: string) =>
                   item.slice(40, 43).concat(",")
                 )}`}
               >
                 <p> Episodios donde aparece</p>
               </Link>
               <h6>
-                {personaje.episode.map((item) =>
+                {personaje.episode.map((item: string) =>
                   item.slice(40, 43).concat(" ")
                 )}
               </h6>

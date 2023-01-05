@@ -29,16 +29,18 @@ interface filtro {
 interface Props {
   genero: string;
   setGenero: React.Dispatch<React.SetStateAction<string>>;
-  personajes: filtro[];
-  setFiltro: React.Dispatch<React.SetStateAction<Array<personaje>>>;
+  personajes: personaje[];
+  setFiltro: React.Dispatch<React.SetStateAction<Array<filtro>>>;
+  setPersonajes: React.Dispatch<React.SetStateAction<Array<personaje>>>;
 }
 
-export const Filtros = ({
+export function Filtros({
   genero,
   setGenero,
   personajes,
   setFiltro,
-}: Props) => {
+  setPersonajes,
+}: Props) {
   useEffect(() => {
     if (genero === "All") {
       setFiltro(personajes);
@@ -47,16 +49,17 @@ export const Filtros = ({
     const filtered = personajes.filter((personaje) =>
       personaje.gender.includes(genero)
     );
+    //setPersonajes(filtered);
     setFiltro(filtered);
   }, [genero]);
 
-  const setMale = () => {
+  const setMale = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     setGenero("Male");
   };
-  const setFemale = () => {
+  const setFemale = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     setGenero("Female");
   };
-  const setAll = () => {
+  const setAll = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     setGenero("All");
   };
   return (
@@ -68,4 +71,4 @@ export const Filtros = ({
       </ul>
     </div>
   );
-};
+}

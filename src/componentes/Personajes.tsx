@@ -39,6 +39,7 @@ export function Personajes() {
   const [pages, setPages] = useState<Record<string, string>>({});
   const [genero, setGenero] = useState<string>("");
   const [filtro, setFiltro] = useState<Array<filtro>>([]);
+
   useEffect(() => {
     fetchPersonajes(URL);
   }, []);
@@ -49,7 +50,7 @@ export function Personajes() {
       .then((resp) => {
         setPersonajes(resp.data.results);
         setPages(resp.data.info);
-        setFiltro(resp.data.info);
+        setFiltro(resp.data.results);
       })
       .catch((error) => {
         console.log(error);
@@ -62,7 +63,7 @@ export function Personajes() {
   const handlePrev = () => {
     fetchPersonajes(pages.prev);
   };
-
+  console.log(filtro);
   return (
     <div>
       <Filtros
@@ -70,6 +71,7 @@ export function Personajes() {
         setGenero={setGenero}
         personajes={personajes}
         setFiltro={setFiltro}
+        setPersonajes={setPersonajes}
       />
       <PaginacionPersonajes
         handleNext={handleNext}
@@ -78,9 +80,13 @@ export function Personajes() {
         next={pages.next}
       />
       <div className="cards-contenedor">
-        {filtro.map((item) => (
-          <Personaje personajes={personajes} key={item.id} />
-        ))}
+        {filtro.map((personaje) => {
+          return (
+            <div key={personaje.id}>
+              <Personaje personajes={personajes} />
+            </div>
+          );
+        })}
       </div>
     </div>
   );
