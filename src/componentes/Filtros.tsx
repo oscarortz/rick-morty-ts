@@ -62,11 +62,15 @@ export function Filtros({
   const setAll = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     setGenero("All");
   };
+  const setUnknown = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    setGenero("unknown");
+  };
   return (
     <div>
       <ul>
         <button onClick={setMale}>masculino</button>
         <button onClick={setFemale}>femenino</button>
+        <button onClick={setUnknown}>unknown</button>
         <button onClick={setAll}>todos</button>
       </ul>
     </div>

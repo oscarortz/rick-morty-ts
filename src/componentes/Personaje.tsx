@@ -16,6 +16,7 @@ interface Props {
     };
   }>;
 }
+
 const Personaje = ({ personajes }: Props) => {
   return (
     <div>
