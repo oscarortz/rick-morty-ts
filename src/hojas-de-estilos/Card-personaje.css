@@ -5,6 +5,7 @@
   flex-wrap: wrap;
   border-radius: 5px;
   min-width: 650px;
+  height: 300px;
 }
 .status-contenedor {
   display: flex;
@@ -18,4 +19,8 @@ h4 h5 {
 }
 h6 {
   max-width: 315px;
+}
+.card-info {
+  height: 300px;
+  width: 350px;
 }

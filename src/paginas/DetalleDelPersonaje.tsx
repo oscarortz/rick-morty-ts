@@ -1,37 +1,59 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { ReactNode, useContext, useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import AuthContext from "../contexto/AuthContext";
 
-/* interface detalles {
+interface detalles {
+  childre: ReactNode;
   id: number;
   name: string;
   status: string;
-} */
+  species: string;
+  gender: string;
+  image: string;
+  location: {
+    name: string;
+  };
+}
 
 export const DetalleDelPersonaje = () => {
-  const [detallePersonaje, setDetallePersonaje] = useState<
-    Record<string, string>
-  >({});
+  const [detallePersonaje, setDetallePersonaje] = useState<detalles>();
   const { id } = useParams();
+  const Context = useContext(AuthContext);
   useEffect(() => {
     getPersonajeById();
-  }, [id]);
+  }, []);
 
   const getPersonajeById = () => {
     axios
       .get(`https://rickandmortyapi.com/api/character/${id}`)
       .then((resp) => {
         console.log(resp.data);
-        setDetallePersonaje(resp.data.results);
+        setDetallePersonaje(resp.data);
       })
       .catch((err) => {
         console.log(err);
       });
   };
-
+  console.log(detallePersonaje);
   return (
     <div>
-      <h4>{}</h4>
+      {Context?.auth ? (
+        <div>
+          <img src={detallePersonaje?.image} alt={detallePersonaje?.name} />
+          <h4>{detallePersonaje?.id}</h4>
+          <h4>{detallePersonaje?.name}</h4>
+          <h4>{detallePersonaje?.location.name}</h4>
+          <h4>{detallePersonaje?.status}</h4>
+          <h4>{detallePersonaje?.species}</h4>
+          <h4>{detallePersonaje?.gender}</h4>
+        </div>
+      ) : (
+        <div>
+          <h2>"Logueate para ver el contenido"</h2>
+          <Link to="/login">Login</Link>
+        </div>
+      )}
     </div>
   );
 };

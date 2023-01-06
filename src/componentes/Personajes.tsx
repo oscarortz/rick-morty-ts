@@ -6,7 +6,7 @@ import { Filtros } from "./Filtros";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import "../hojas-de-estilos/Card-personaje.css";
-
+import { FcBusinessman, FcBusinesswoman } from "react-icons/fc";
 const URL = "https://rickandmortyapi.com/api/character";
 
 export interface personaje {
@@ -65,7 +65,7 @@ export function Personajes() {
   const handlePrev = () => {
     fetchPersonajes(pages.prev);
   };
-  console.log(filtro);
+
   return (
     <div>
       <Filtros
@@ -88,7 +88,7 @@ export function Personajes() {
               <Link to={`/detalleDelPersonaje/${personaje.id}`}>
                 <img src={personaje.image} alt={personaje.name} />
               </Link>
-              <div>
+              <div className="card-info">
                 <h3>{personaje.name}</h3>
                 <div className="status-contenedor">
                   {personaje.status === "Alive" ? <Alive /> : <Dead />}
@@ -97,8 +97,23 @@ export function Personajes() {
                   </h5>
                 </div>
                 <p>Last know location</p>
-                <h5>{personaje.location.name}</h5>
-                <h5>{personaje.gender}</h5>
+                <Link
+                  to={`/detalleLocacion/${personaje.location.url.slice(
+                    41,
+                    43
+                  )}`}
+                >
+                  {personaje.location.name}
+                </Link>
+                <h5>
+                  {personaje.gender === "Male" ? (
+                    <FcBusinessman />
+                  ) : personaje.gender === "Female" ? (
+                    <FcBusinesswoman />
+                  ) : (
+                    personaje.gender
+                  )}
+                </h5>
 
                 <Link
                   to={`/detalleEpisodios/${personaje.episode.map(
