@@ -19,7 +19,7 @@ const DetalleLocacion = () => {
 
   useEffect(() => {
     getLocacionByID(`https://rickandmortyapi.com/api/location/${id}`);
-  }, []);
+  }, [id]);
 
   const getLocacionByID = (url: string) => {
     axios

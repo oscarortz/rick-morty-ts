@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import AuthContext, { AuthProvider } from "../contexto/AuthContext";
+import AuthContext from "../contexto/AuthContext";
 
 interface detalles {
   id: number;
@@ -16,14 +16,13 @@ export const DetalleEpisodios = () => {
   const { id } = useParams();
   const Context = useContext(AuthContext);
   useEffect(() => {
-    getDetalleEpisodios();
-  }, []);
+    getDetalleEpisodios(`https://rickandmortyapi.com/api/episode/${id}`);
+  }, [id]);
 
-  const getDetalleEpisodios = () => {
+  const getDetalleEpisodios = (url: string) => {
     axios
-      .get(`https://rickandmortyapi.com/api/episode/${id}`)
+      .get(url)
       .then((response) => {
-        console.log(response.data);
         setDetalleEpisodios(response.data);
       })
       .catch((error) => {

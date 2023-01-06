@@ -21,12 +21,12 @@ export const DetalleDelPersonaje = () => {
   const { id } = useParams();
   const Context = useContext(AuthContext);
   useEffect(() => {
-    getPersonajeById();
-  }, []);
+    getPersonajeById(`https://rickandmortyapi.com/api/character/${id}`);
+  }, [id]);
 
-  const getPersonajeById = () => {
+  const getPersonajeById = (url: string) => {
     axios
-      .get(`https://rickandmortyapi.com/api/character/${id}`)
+      .get(url)
       .then((resp) => {
         console.log(resp.data);
         setDetallePersonaje(resp.data);
