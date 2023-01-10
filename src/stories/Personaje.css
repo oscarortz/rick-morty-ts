@@ -1,0 +1,35 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.tarjetas {
+  background-color: #bbb;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.tarjeta {
+  margin: 10px;
+  display: flex;
+  background-color: darkkhaki;
+  align-items: center;
+  justify-content: center;
+  width: 550px;
+  height: 250px;
+  border: 1px solid #000;
+}
+.informacion {
+  display: flex;
+  flex-direction: column;
+  margin-left: 8px;
+  justify-content: center;
+  width: 450px;
+  height: 300px;
+}
+
+img {
+  height: 250px;
+  width: 250px;
+}
